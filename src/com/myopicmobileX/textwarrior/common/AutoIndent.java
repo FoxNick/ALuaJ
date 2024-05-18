@@ -60,7 +60,9 @@ public class AutoIndent {
 					
 					//mythoi修复，如果第一行为空行问题
 					if(builder.length()==0)
-						continue;
+						{
+						    continue;
+						}
 					
                     if(builder.charAt(builder.length()-1)==' ')
                         builder.deleteCharAt(builder.length()-1);

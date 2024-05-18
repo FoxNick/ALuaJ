@@ -1030,7 +1030,9 @@ public class FreeScrollingTextField extends View
         } // end while
         doOptionHighlightRow(canvas);
         if(!isWordWrap())
-        doBlockLine(canvas);
+        {
+            doBlockLine(canvas);
+        }
     }
 
     private void doBlockLine(Canvas canvas) {

@@ -1049,7 +1049,9 @@ public class FreeScrollingTextField extends View
         SharedPreferences pre = PreferenceManager.getDefaultSharedPreferences(_context);
 	    boolean isLine=pre.getBoolean("codeBlockLine",true);
         if(!isWordWrap()&&isLine)
-        doBlockLine(canvas);
+        {
+            doBlockLine(canvas);
+        }
     }
 
     private void doBlockLine(Canvas canvas) {
