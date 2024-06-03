@@ -271,12 +271,12 @@ public class Lexer
 					String claz0=APIConfig.RevoltHashMap.get(name1);//claz为全类名
 					if (names.size() > 2)
 					{
-						if (claz0 != null && !language.isUserWord(names.get(index - 2)) && names.get(index - 1).equals("="))
+						if (claz0 != null && !language.isUserWord(names.get(index - 2)) && "=".equals(names.get(index - 1)))
 						{
 							language.addNormalWord(names.get(index - 2));					
 							varAndClass.put(names.get(index - 2), claz0);				
 						}
-						else if (!language.isUserWord(names.get(index - 2)) && names.get(index - 1).equals("="))
+						else if (!language.isUserWord(names.get(index - 2)) && "=".equals(names.get(index - 1)))
 						{				
 							language.addNormalWord(names.get(index - 2));					
 						}					
@@ -398,7 +398,7 @@ public class Lexer
 						{
 							tokens.add(new Pair(len, NORMAL));
 						}
-						if (lastType == LuaTokenTypes.ASSIGN && name.equals("require"))
+						if (lastType == LuaTokenTypes.ASSIGN && "require".equals(name))
 						{
 							language.addUserWord(lastName);
 							if (tokens.size() >= 3)

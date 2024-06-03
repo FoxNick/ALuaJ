@@ -67,7 +67,7 @@ public class DealClasses
     //=========初始化代码start================ 
     if (!isInerClass)
     {//如果不是内部类
-      if (mSuper.equals(""))
+      if ("".equals(mSuper))
       {//如果没有继承
         strbuf.append("package com.mythoi.classes;\n import com.luajava.*;\n import com.androlua.LuaActivity;\n public class " + className + " {\n private LuaTable luaTableX;\n"); 
       }
@@ -88,7 +88,7 @@ public class DealClasses
     }
   else
     {//如果是内部类
-      if (mSuper.equals(""))
+      if ("".equals(mSuper))
       {//如果没有继承
         strbuf.append("public class " + className + " {\n"); 
       }
@@ -111,11 +111,11 @@ public class DealClasses
       String pp="";//完整的参数，含变量和类型
       String p="";//不完整的参数，含变量
       String r=stts[0];//返回值
-      if (r.equals(""))
+      if ("".equals(r))
       r = "void";
       for (int i=0;i < stts.length;i++)
       {
-        if (!stts[i].equals(""))
+        if (!"".equals(stts[i]))
         {
           if (i == stts.length - 1)
           { 
@@ -140,7 +140,7 @@ public class DealClasses
         }
       } 
 
-      if(mSuper.equals("")&&(r.contains("@")||r.contains("#")))//如果没有继承
+      if("".equals(mSuper)&&(r.contains("@")||r.contains("#")))//如果没有继承
       {
         throw new Exception(className+"类没有继承父类，不能使用@和#操作，请去除");
 
@@ -165,7 +165,7 @@ public class DealClasses
             cpp += ",LuaTable luaTable";
           }
 
-          if (!mSuper.equals(""))
+          if (!"".equals(mSuper))
           {//是继承
             String st="public " + className.toString() + "(" + cpp + "){\n super(" + cp + ");\n this.luaTableX=luaTable; \n" + makeCFuncCode(className.toString(), cp, false) + " \n}\n";
             strbuf.append(st);
@@ -178,7 +178,7 @@ public class DealClasses
         }
       else
         {
-          if (!mSuper.equals(""))
+          if (!"".equals(mSuper))
           {//是继承
             String st="public " + className.toString() + "(" + cpp + "){\n super(" + cp + ");\n" + makeCFuncCode(className.toString(), cp, true) + " \n}\n";
             strbuf.append(st); 
@@ -197,7 +197,7 @@ public class DealClasses
       }
     else if (r.contains("#"))
       {//如果protected方法转public方法
-        if (r.replace("#", "").equals("") || r.replace("#", "").equals("void"))
+        if ("".equals(r.replace("#", "")) || "void".equals(r.replace("#", "")))
         {
           String st="public void  _" + method + "(" + pp + "){\n  this." + method + "(" + p + ");\n }\n";
           strbuf.append(st);
@@ -261,7 +261,7 @@ public class DealClasses
   {
     StringBuffer strb=new StringBuffer();
     strb.append("Object tmp=null;\n"); 
-    if (!strReturn.equals("void"))
+    if (!"void".equals(strReturn))
     strb.append("tmp=super." + funName + "(" + funVar + ");\n");
   else
     strb.append("super." + funName + "(" + funVar + ");\n"); 
@@ -277,7 +277,7 @@ public class DealClasses
     strb.append("if(luaFunc==null){\n throw new Exception(\"Runtime error：lua表中未声明<<" + funName + ">>函数\");\n }");
     strb.append("obj=luaFunc.__call(new Object[]{" + funVar + "});\n");
     strb.append("}catch(Exception e){try{LuaState L=luaTableX.getLuaState();L.getGlobal(\"activity\"); \n LuaActivity luaActivity=(LuaActivity) L.toJavaObject(-1);\n com.androlua.Util.showError(luaActivity,com.androlua.ShowErrorActivity.class,\" Java回调的<<"+funName+">>Lua函数里有错误：\"+e.toString()); luaActivity.finish();  System.exit(0);}catch(Exception ee){}}");
-    if (!strReturn.equals("void"))
+    if (!"void".equals(strReturn))
     {
       strb.append("if(obj==null) return (" + strReturn + ")tmp; \n else \n return (" + strReturn + ")obj;");
 
@@ -302,7 +302,7 @@ public class DealClasses
     strb.append("if(luaFunc==null){\n throw new Exception(\"Runtime error：lua表中未声明<<" + funName + ">>函数\");\n }");
     strb.append("obj=luaFunc.__call(new Object[]{" + funVar + "});\n");
     strb.append("}catch(Exception e){try{LuaState L=luaTableX.getLuaState();L.getGlobal(\"activity\"); \n LuaActivity luaActivity=(LuaActivity) L.toJavaObject(-1);\n com.androlua.Util.showError(luaActivity,com.androlua.ShowErrorActivity.class,\" Java回调的<<"+funName+">>Lua函数里有错误：\"+e.toString()); luaActivity.finish(); System.exit(0);}catch(Exception ee){}}");
-    if (!(strReturn.equals("void") || strReturn.equals("")))
+    if (!("void".equals(strReturn) || "".equals(strReturn)))
     strb.append("return (" + strReturn + ")obj;");
     return strb.toString();
 

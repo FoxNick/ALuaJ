@@ -381,7 +381,7 @@ public class Lexer {
                                 tokens.add(new Pair(len, NORMAL));
                             }
 
-                            if (lastType == LuaTokenTypes.ASSIGN && name.equals("require")) {
+                            if (lastType == LuaTokenTypes.ASSIGN && "require".equals(name)) {
                                 language.addUserWord(lastName);
                                 if (tokens.size() >= 3) {
                                     Pair p = tokens.get(tokens.size() - 3);
