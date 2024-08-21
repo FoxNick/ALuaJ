@@ -187,7 +187,9 @@ public class AutoCompletePanel
   public void show()
   {
     if (!_autoCompletePanel.isShowing())
-    _autoCompletePanel.show();
+    {
+        _autoCompletePanel.show();
+    }
     _autoCompletePanel.getListView().setFadingEdgeLength(0);
   }
 
@@ -270,7 +272,9 @@ public class AutoCompletePanel
     public int getItemHeight()
     {
       if (_h != 0)
-      return _h;
+      {
+          return _h;
+      }
 
       LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
       TextView item = (TextView) inflater.inflate(android.R.layout.simple_list_item_1, null);
@@ -336,7 +340,9 @@ public class AutoCompletePanel
                 }
                 String str=strbuff.toString();
                 if (str.equals("") || str == null)
-                str = " ";
+                {
+                    str = " ";
+                }
                 if (method.getName().toLowerCase().startsWith(keyword))
                 if(!buf.contains(method.getName() + "("))
                 buf.add(method.getName() + "(");
@@ -378,7 +384,9 @@ public class AutoCompletePanel
                 }
                 String str=strbuff.toString();
                 if (str.equals("") || str == null)
-                str = " ";
+                {
+                    str = " ";
+                }
                 String methodType=Modifier.toString(method.getModifiers());//获取方法类型
                 if (methodType.contains("static"))//判断是否为静态方法
                 {
@@ -453,9 +461,13 @@ public class AutoCompletePanel
                   }
                   String str=strbuff.toString();
                   if (str.equals("") || str == null)
-                  str = " ";
+                  {
+                      str = " ";
+                  }
                   if(!buf.contains(method.getName()))
-                  buf.add(method.getName() + "(");
+                  {
+                      buf.add(method.getName() + "(");
+                  }
                   // buf.add(Modifier.toString(method.getModifiers()) + " " + (method.getGenericReturnType() + " ").replaceAll("class ", "") + method.getName() + "(" + str.substring(0, str.length() - 1) + ")");
                 }
 
@@ -496,7 +508,9 @@ public class AutoCompletePanel
                   }
                   String str=strbuff.toString();
                   if (str.equals("") || str == null)
-                  str = " ";
+                  {
+                      str = " ";
+                  }
 
                   String methodType=Modifier.toString(method.getModifiers());//获取方法类型
                   if (methodType.contains("static"))//判断是否为静态方法
