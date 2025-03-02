@@ -76,7 +76,9 @@ public abstract class Language
   public void addNormalWord(String name)
   {
     if(!_normalCache.contains(name) && !_names.containsKey(name))
-    _normalCache.add(name);
+    {
+        _normalCache.add(name);
+    }
     _normals.put(name, Lexer.UNKNOWN); 
   }
 
@@ -152,7 +154,9 @@ public abstract class Language
     for (int i = 0; i < names.length; ++i) 
     {
       if(!buf.contains(names[i]))
-      buf.add(names[i]);
+      {
+          buf.add(names[i]);
+      }
       _names.put(names[i], Lexer.NAME);
     }
     _name=new String[buf.size()];
@@ -174,7 +178,9 @@ public abstract class Language
   public void addUserWord(String name)
   {
     if(!_ueserCache.contains(name) && !_names.containsKey(name))
-    _ueserCache.add(name);
+    {
+        _ueserCache.add(name);
+    }
     _users.put(name, Lexer.NAME); 
   }
 

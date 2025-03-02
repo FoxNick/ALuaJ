@@ -842,7 +842,9 @@ public class LuaLexer {
     zzEndRead = zzStartRead;  /* invalidate buffer    */
 
     if (zzReader != null)
-      zzReader.close();
+      {
+          zzReader.close();
+      }
   }
 
 

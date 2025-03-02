@@ -60,13 +60,19 @@ public class LuaEditorX extends FreeScrollingTextField
     setTypeface(Typeface.MONOSPACE);
     File df=new File(fontDir + "default.ttf");
     if (df.exists())
-    setTypeface(Typeface.createFromFile(df));
+    {
+        setTypeface(Typeface.createFromFile(df));
+    }
     File bf=new File(fontDir + "bold.ttf");
     if (bf.exists())
-    setBoldTypeface(Typeface.createFromFile(bf));
+    {
+        setBoldTypeface(Typeface.createFromFile(bf));
+    }
     File tf=new File(fontDir + "italic.ttf");
     if (tf.exists())
-    setItalicTypeface(Typeface.createFromFile(tf));
+    {
+        setItalicTypeface(Typeface.createFromFile(tf));
+    }
     DisplayMetrics dm=context.getResources().getDisplayMetrics();
 
     float size=TypedValue.applyDimension(2, BASE_TEXT_SIZE_PIXELS, dm);
@@ -104,13 +110,19 @@ public class LuaEditorX extends FreeScrollingTextField
     setTypeface(Typeface.MONOSPACE);
     File df=new File(fontDir + "default.ttf");
     if (df.exists())
-    setTypeface(Typeface.createFromFile(df));
+    {
+        setTypeface(Typeface.createFromFile(df));
+    }
     File bf=new File(fontDir + "bold.ttf");
     if (bf.exists())
-    setBoldTypeface(Typeface.createFromFile(bf));
+    {
+        setBoldTypeface(Typeface.createFromFile(bf));
+    }
     File tf=new File(fontDir + "italic.ttf");
     if (tf.exists())
-    setItalicTypeface(Typeface.createFromFile(tf));
+    {
+        setItalicTypeface(Typeface.createFromFile(tf));
+    }
     DisplayMetrics dm=context.getResources().getDisplayMetrics();
 
     float size=TypedValue.applyDimension(2, BASE_TEXT_SIZE_PIXELS, dm);
@@ -347,7 +359,9 @@ public class LuaEditorX extends FreeScrollingTextField
     {
       String s=edit.getText().toString();
       if (s.isEmpty())
-      return;
+      {
+          return;
+      }
 
       int l=Integer.valueOf(s).intValue();
       if (l > _hDoc.getRowCount())
@@ -476,7 +490,9 @@ public class LuaEditorX extends FreeScrollingTextField
         {
           String s=edit.getText().toString();
           if (s.isEmpty())
-          return;
+          {
+              return;
+          }
 
           int l=Integer.valueOf(s).intValue();
           if (l > _hDoc.getRowCount())
@@ -723,7 +739,9 @@ public class LuaEditorX extends FreeScrollingTextField
           _lastSelectedFile = filename;
 
           if (_lastSelectedFile.endsWith(".xml")||_lastSelectedFile.endsWith(".lua")||_lastSelectedFile.endsWith(".aly")||_lastSelectedFile.endsWith(".txt"))
-          isOpenJava = false;
+          {
+              isOpenJava = false;
+          }
           if (_lastSelectedFile.endsWith(".xml"))
           {
             setBasewordColor(0xffEA9016);
@@ -732,7 +750,9 @@ public class LuaEditorX extends FreeScrollingTextField
           }else{
 
             if (_lastSelectedFile.endsWith(".java"))
-            isOpenJava = true;
+            {
+                isOpenJava = true;
+            }
             Lexer.getLanguage().removeKeyWords(new String[]{"-","/","<",">"});
             setBasewordColor(0xFF2D87C7);
             setKeywordColor(0xFFD040DD);

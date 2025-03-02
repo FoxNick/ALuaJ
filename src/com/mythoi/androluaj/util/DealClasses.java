@@ -21,7 +21,9 @@ public class DealClasses
       LuaState L=LuaStateFactory.newLuaState();
       int k= L.LdoFile(projectPath+"/src/classes.lua");
       if (k != 0 && new File(projectPath+"/src/classes.lua").exists())
-      throw new LuaException("Syntax error");
+      {
+          throw new LuaException("Syntax error");
+      }
       L.getGlobal("classes");
       LuaTable luaTable= (LuaTable) L.toJavaObject(-1);
 
@@ -112,7 +114,9 @@ public class DealClasses
       String p="";//不完整的参数，含变量
       String r=stts[0];//返回值
       if (r.equals(""))
-      r = "void";
+      {
+          r = "void";
+      }
       for (int i=0;i < stts.length;i++)
       {
         if (!stts[i].equals(""))
@@ -262,9 +266,13 @@ public class DealClasses
     StringBuffer strb=new StringBuffer();
     strb.append("Object tmp=null;\n"); 
     if (!strReturn.equals("void"))
-    strb.append("tmp=super." + funName + "(" + funVar + ");\n");
+    {
+        strb.append("tmp=super." + funName + "(" + funVar + ");\n");
+    }
   else
-    strb.append("super." + funName + "(" + funVar + ");\n"); 
+    {
+        strb.append("super." + funName + "(" + funVar + ");\n");
+    } 
     strb.append("Object obj=new Object();\n");
     strb.append("try{\n");
     if (!isInerClass)
@@ -303,7 +311,9 @@ public class DealClasses
     strb.append("obj=luaFunc.__call(new Object[]{" + funVar + "});\n");
     strb.append("}catch(Exception e){try{LuaState L=luaTableX.getLuaState();L.getGlobal(\"activity\"); \n LuaActivity luaActivity=(LuaActivity) L.toJavaObject(-1);\n com.androlua.Util.showError(luaActivity,com.androlua.ShowErrorActivity.class,\" Java回调的<<"+funName+">>Lua函数里有错误：\"+e.toString()); luaActivity.finish(); System.exit(0);}catch(Exception ee){}}");
     if (!(strReturn.equals("void") || strReturn.equals("")))
-    strb.append("return (" + strReturn + ")obj;");
+    {
+        strb.append("return (" + strReturn + ")obj;");
+    }
     return strb.toString();
 
   }
